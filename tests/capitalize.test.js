@@ -1,3 +1,4 @@
+const assert = require('node:assert').strict;
 const { capitalize } = require('../src/capitalize.js');
 
 const values = [
@@ -11,10 +12,6 @@ const values = [
     }
 ];
 
-values.forEach(({ value, returnValue }) => {
-    if (capitalize(value) !== returnValue) {
-        throw new Error(`Ошибка! Входной данные: ${value}`);
-    }
-});
+values.forEach(({ value, returnValue }) => assert.strictEqual(capitalize(value), returnValue));
 
 console.log('Все работает корректно!');
